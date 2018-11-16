@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="016384e2-0783-45e9-af75-f7073773775c" name="test" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="C:\Users\andre\Documents\Universidad\9.Noveno ciclo\ArquitecturaAplicaciones\GrovePi" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
