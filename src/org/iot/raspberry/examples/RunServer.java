@@ -6,6 +6,10 @@
 package org.iot.raspberry.examples;
 
 import java.io.File;
+import java.rmi.Remote;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -15,6 +19,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.iot.raspberry.grovepi.GrovePi;
 import org.iot.raspberry.grovepi.pi4j.GrovePi4J;
+import rmi.api.iot.LCD;
+import rmi.api.iot.Led;
+import rmi.api.iot.SensorRuido;
 
 /**
  *
@@ -34,14 +41,16 @@ public class RunServer {
     final Monitor monitor = new Monitor();
     LedObject led = new LedObject(grovePi,2);
     LCDObject lcd = new LCDObject(grovePi);
+    SensorRuidoObject sensorRuido = new SensorRuidoObject(grovePi,2);
+    Registry registry =  LocateRegistry.createRegistry(2525);
+   
     runner.execute(() -> {
       try {
-        //example.run(grovePi, monitor);
-        led.encenderLed();
-        Thread.sleep(1000);
-         led.apagarLed();
-         Thread.sleep(1000);
-         lcd.mostrarMensaje("Hola Dieguito");
+          System.out.println(args[0]);
+        Led stub = (Led) UnicastRemoteObject.exportObject(led,0);
+        registry.rebind("Led", stub);
+       //LCD stub2 = (LCD) UnicastRemoteObject.exportObject(lcd,0);
+       //SensorRuido stub3 = (SensorRuido) UnicastRemoteObject.exportObject(sensorRuido,0);
         
       } catch (Exception ex) {
         Logger.getLogger(Runner.class.getName()).log(Level.SEVERE, null, ex);
@@ -77,7 +86,7 @@ public class RunServer {
     fileMonitor.shutdownNow();
     runner.awaitTermination(10, TimeUnit.SECONDS);
     control.delete();
-    System.exit(0);
+    //System.exit(0);
     }
     
 }
