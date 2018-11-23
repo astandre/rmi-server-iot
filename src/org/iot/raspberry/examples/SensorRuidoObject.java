@@ -22,7 +22,7 @@ public class SensorRuidoObject implements SensorRuido {
         try {
             GroveSoundSensor soundSensor = new GroveSoundSensor(grovePi, pin);
             soundLevel = soundSensor.get();
-            System.out.println("Ruido Actual" + String.valueOf(soundLevel) + "db");
+            System.out.println("Ruido Actual " + String.valueOf(soundLevel) + "db");
         } catch (IOException ex) {
             Logger.getLogger(SensorRuidoObject.class.getName()).log(Level.SEVERE, null, ex);
         }
