@@ -20,7 +20,7 @@ public class SensorRuidoObject implements SensorRuido {
     public Double obtenerRuido() throws RemoteException {
         double soundLevel = 0;
         try {
-            GroveSoundSensor soundSensor = new GroveSoundSensor(grovePi, 0);
+            GroveSoundSensor soundSensor = new GroveSoundSensor(grovePi, pin);
             soundLevel = soundSensor.get();
             System.out.println("Ruido Actual" + String.valueOf(soundLevel) + "db");
         } catch (IOException ex) {
