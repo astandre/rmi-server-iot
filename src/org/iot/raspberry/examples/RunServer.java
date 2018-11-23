@@ -29,12 +29,11 @@ public class RunServer {
         LCDObject lcd = new LCDObject(grovePi);
         SensorRuidoObject sensorRuido = new SensorRuidoObject(grovePi, 2);
         Registry registry = LocateRegistry.createRegistry(2525);
-        System.out.println(args[0]);
         Led stub = (Led) UnicastRemoteObject.exportObject(led, 0);
         registry.rebind("Led", stub);
         //LCD stub2 = (LCD) UnicastRemoteObject.exportObject(lcd,0);
         //SensorRuido stub3 = (SensorRuido) UnicastRemoteObject.exportObject(sensorRuido,0);
-        System.out.println("RUNNING Server: " + args[0] );
+        System.out.println("RUNNING Server: ");
     }
 
 }
