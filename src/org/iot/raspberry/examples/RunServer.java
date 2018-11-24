@@ -1,17 +1,9 @@
 package org.iot.raspberry.examples;
 
-import java.io.File;
-import java.rmi.Remote;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.Scanner;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import org.iot.raspberry.grovepi.GrovePi;
 import org.iot.raspberry.grovepi.pi4j.GrovePi4J;
